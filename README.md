@@ -25,7 +25,7 @@ Here’s a breakdown of the key steps involved in building **Eduscan**:
 ### Checklist
 
 - [x] **Set up React Native app**: Initialize the project using Expo.
-- [x] **Add authentication functionality**: Integrate user authentication (e.g., OAuth, Firebase, etc.).
+- [x] **Add authentication functionality**: Integrate user authentication 
 - [x] **Implement camera functionality**: Use `expo-camera` to allow QR code scanning.
 - [x] **QR code scanning**: Set up QR code scanning using the camera and validate the scanned data.
 - [x] **Generate unique QR codes**: Generate time-limited QR codes for each student, valid for 2 minutes.
