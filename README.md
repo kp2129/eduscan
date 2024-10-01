@@ -7,7 +7,6 @@
 - 🟢 **Dynamic QR Codes**: Each student receives a unique QR code that refreshes every two minutes.
 - 🟢 **Real-Time Attendance**: Instantly records check-ins and stores them in the database.
 - 🟢 **User-Friendly**: Simple, intuitive web interface for seamless use.
-- 🟢 **Scalability**: Efficiently handles check-ins for large-scale institutions (1000+ students).
 - 🟢 **Security**: Time-limited QR codes ensure only valid and authorized check-ins.
 
 ### Technologies
@@ -16,7 +15,6 @@
 - **Backend**: Laravel
 - **Database**: MySQL
 - **QR Scanning**: Expo Camera
-- **Authentication**: OAuth (or your choice of auth provider)
 
 ---
 
