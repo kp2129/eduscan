@@ -1,7 +1,8 @@
+import { enableScreens } from 'react-native-screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView, TouchableOpacity } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import CameraScreen from './screens/CameraScreen';
@@ -14,6 +15,9 @@ import { useState, useEffect } from 'react';
 import SplashScreen from './screens/SplashScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NetInfo from '@react-native-community/netinfo';
+
+enableScreens(); 
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -80,7 +84,7 @@ export default function App() {
         const user = await loadUser();
         setUser(user);
       } catch (e) {
-        // Handle error
+        setStatus("loading");
       }
       setStatus("idle");
     }
@@ -116,7 +120,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
-      <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView className="flex-1 bg-blue-vtdt">
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -143,10 +147,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: {
-    paddingTop: 40,
-    flex: 1,
-    backgroundColor: "#282560",
-  },
-});
+

@@ -21,15 +21,14 @@ use Monolog\Registry;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get('/qr', [QRCodeController::class, 'generateQRCode']);
     Route::post('/validate-qr-code', [QRCodeController::class, 'validateQRCode']);
-
+    Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::post('/logout', [AuthController::class, 'logout']);
-
 });
 
 Route::post('/register', [AuthController::class, 'register']);

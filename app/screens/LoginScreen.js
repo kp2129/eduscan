@@ -33,10 +33,10 @@ export default function App({ navigation }) {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            className="flex-1 bg-vtdt "
+            className="flex-1 bg-blue-vtdt "
         >
-            <ScrollView className="grow bg-vtdt">
-            <SafeAreaView className="flex-1 justify-center">
+            <ScrollView className="grow bg-blue-vtdt">
+            <SafeAreaView className="flex-1 justify-center pt-5">
                     <View className="items-center">
                         <Image className="w-32 h-32"
                             source={require('../assets/vtdt.png')}
@@ -66,11 +66,11 @@ export default function App({ navigation }) {
                             <Text className="text-white text-center font-bold text-lg">Login</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            className=" py-3 rounded-md mt-6 shadow-lg mb-10"
+                            className=" py-3 rounded-md mt-6 mb-10"
                             onPress={() =>
                                 navigation.navigate('Register')}
                         >
-                            <Text className="text-blue-800 text-center text-lg">Create an account</Text>
+                            <Text className="text-blue-600 bg-transparent text-center text-lg">Create an account</Text>
                         </TouchableOpacity>
 
                     </View>

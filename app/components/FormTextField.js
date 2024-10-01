@@ -1,4 +1,4 @@
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons'; 
 import { useState } from 'react';
 
@@ -12,6 +12,7 @@ export default function FormTextField({ label, secureTextEntry, errors = [], ...
                     className="h-12 bg-gray-100 pl-4 pr-10 rounded-md text-base focus:border-blue-500 focus:border"
                     placeholder={label} 
                     autoCapitalize="none"
+                    placeholderTextColor='gray'
                     secureTextEntry={isPasswordVisible}
                     {...rest}
                 />
@@ -20,7 +21,7 @@ export default function FormTextField({ label, secureTextEntry, errors = [], ...
                         onPress={() => setIsPasswordVisible(!isPasswordVisible)}
                         style={{
                             position: 'absolute',
-                            right: 10,
+                            right: 20,
                             top: '30%', 
                         }}
                     >
@@ -33,7 +34,7 @@ export default function FormTextField({ label, secureTextEntry, errors = [], ...
                 )}
             </View>
             {errors.length > 0 && (
-                <Text className="text-red-500 mt-1 text-sm">{errors.join(", ")}</Text>
+                <Text className="text-tahiti mt-1 text-sm">{errors.join(", ")}</Text>
             )}
         </View>
     );

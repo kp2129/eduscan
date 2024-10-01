@@ -38,10 +38,10 @@ export default function RegisterScreen({ navigation }) {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            className="flex-1 bg-vtdt"
+            className="flex-1 bg-blue-vtdt"
         >
             <ScrollView className="grow">
-                <SafeAreaView className="flex-1 justify-center bg-vtdt">
+                <SafeAreaView className="flex-1 justify-center pt-5 bg-blue-vtdt">
                     <View className="items-center">
                         <Image className="w-32 h-32"
                             source={require('../assets/vtdt.png')}
@@ -84,10 +84,10 @@ export default function RegisterScreen({ navigation }) {
                             <Text className="text-white text-center font-bold text-lg">Register</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            className=" py-0 rounded-md mt-0 shadow-lg mb-10"
+                            className=" py-0 rounded-md mt-0  mb-10"
                             onPress={() => navigation.navigate('Login')}
                         >
-                            <Text className="text-blue-800 text-center text-lg">Already have an account</Text>
+                            <Text className="text-blue-600 text-center text-lg">Already have an account</Text>
                         </TouchableOpacity>
                     </View>
                 </SafeAreaView>

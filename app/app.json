@@ -5,11 +5,21 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/vtdt.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
+    ],
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/vtdt.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#282560"
     },
     "ios": {
       "supportsTablet": true
@@ -17,11 +27,18 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/vtdt.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#282560"
+      },
+      "package": "com.kp2129.EduScan",
+      "permissions": ["CAMERA", "INTERNET", "VIBRATE", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0115a918-5e2f-4e1e-b95b-970507798050"
+      }
     }
   }
 }
