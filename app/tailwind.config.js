@@ -17,7 +17,7 @@ module.exports = {
       'blue-vtdt': '#282560',
       'blue-600': '#2563eb',
       'gray-100': '#f3f4f6',
-      'red-900': '#7f1d1d',
+      'red': '#ff0000',
     },
   },
   plugins: [],
