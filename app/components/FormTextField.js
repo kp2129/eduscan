@@ -34,7 +34,7 @@ export default function FormTextField({ label, secureTextEntry, errors = [], ...
                 )}
             </View>
             {errors.length > 0 && (
-                <Text className="text-tahiti mt-1 text-sm">{errors.join(", ")}</Text>
+                <Text className="text-red mt-1 text-sm">{errors.join(", ")}</Text>
             )}
         </View>
     );
