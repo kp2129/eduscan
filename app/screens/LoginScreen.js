@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StyleSheet, Button, Platform, Image, KeyboardAvoidingView, ScrollView, TouchableOpacity, Text } from "react-native";
+import { SafeAreaView, View, StyleSheet, Button, Platform, Image, KeyboardAvoidingView, ScrollView, TouchableOpacity, Text, Alert } from "react-native";
 import { useState, useContext } from "react";
 import FormTextField from "../components/FormTextField";
 import { login, loadUser } from "../services/AuthServices";
@@ -26,6 +26,8 @@ export default function App({ navigation }) {
             console.log(e);
             if (e.response?.status === 422) {
                 setErrors(e.response.data.errors);
+            }else{
+                Alert.alert('Login Error', e.message || 'An error occurred during login.');
             }
         }
     }

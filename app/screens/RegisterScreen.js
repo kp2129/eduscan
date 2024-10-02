@@ -31,6 +31,8 @@ export default function RegisterScreen({ navigation }) {
             console.log(e);
             if (e.response?.status === 422) {
                 setErrors(e.response.data.errors);
+            }else{
+                Alert.alert('Login Error', e.message || 'An error occurred during login.');
             }
         }
     }

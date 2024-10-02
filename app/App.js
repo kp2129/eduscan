@@ -2,7 +2,7 @@ import { enableScreens } from 'react-native-screens';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaView, TouchableOpacity } from 'react-native';
+import { Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import CameraScreen from './screens/CameraScreen';
@@ -83,6 +83,7 @@ export default function App() {
       try {
         const user = await loadUser();
         setUser(user);
+        Alert.alert(`User ${user}`);
       } catch (e) {
         setStatus("loading");
       }
