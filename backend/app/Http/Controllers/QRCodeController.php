@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\QRCode;
 use App\Models\ScannedQRCode;
+use App\Models\User;
 use Carbon\Carbon;
 
 class QRCodeController extends Controller
@@ -12,6 +13,14 @@ class QRCodeController extends Controller
     public function generateQRCode(Request $request)
     {
         $user = $request->user();
+
+        $scannedToday = ScannedQRCode::where('user_id', $user->id)
+            ->whereDate('scanned_at', Carbon::today())
+            ->exists();
+
+        if ($scannedToday) {
+            return response()->json(['message' => 'User has already scanned the QR code today'], 400);
+        }
 
         $existingQRCode = QRCode::where('user_id', $user->id)
             ->whereDate('created_at', Carbon::today())
@@ -35,7 +44,6 @@ class QRCodeController extends Controller
         return response($qrCode->token);
     }
 
-
     public function validateQRCode(Request $request)
     {
         try {
@@ -55,6 +63,9 @@ class QRCodeController extends Controller
                 'token' => $qrCode->token,
                 'scanned_at' => now(), 
             ]);
+
+            $user = User::find($qrCode->user_id);
+            $user->updateIsAtSchoolIfNotScannedToday();
 
             return response()->json(['success' => true, 'qr_code' => $qrCode], 200);
         } catch (\Exception $e) {
