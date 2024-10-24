@@ -2,14 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Validation\Rules;
-use Monolog\Registry;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +15,7 @@ use Monolog\Registry;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 
 Route::group(["middleware" => ["auth:sanctum"]], function () {
     Route::get('/qr', [QRCodeController::class, 'generateQRCode']);

@@ -173,6 +173,7 @@ dependencies {
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
     def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true";
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
     if (isGifEnabled) {
         // For animated gif support

@@ -83,7 +83,6 @@ export default function App() {
       try {
         const user = await loadUser();
         setUser(user);
-        Alert.alert(`User ${user}`);
       } catch (e) {
         setStatus("loading");
       }

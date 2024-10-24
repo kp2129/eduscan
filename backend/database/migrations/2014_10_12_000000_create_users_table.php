@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('class_id')->nullable();
+            $table->boolean('is_at_school')->default(0);
         });
     }
 
