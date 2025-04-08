@@ -16,9 +16,9 @@ class UserResource extends Resource
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('name')->required(),
-            Forms\Components\TextInput::make('surname')->required(),
-            Forms\Components\TextInput::make('email')->required(),
+            Forms\Components\TextInput::make('name')->label('Vārds')->required(),
+            Forms\Components\TextInput::make('surname')->label('Uzvārds')->required(),
+            Forms\Components\TextInput::make('email')->label('E-pasts')->required(),
 
         ]);
     }
@@ -27,10 +27,10 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('surname')->searchable(),
+                Tables\Columns\TextColumn::make('name')->label('Vārds')->searchable(),
+                Tables\Columns\TextColumn::make('surname')->label('Uzvārds')->searchable(),
                 Tables\Columns\TextColumn::make('class.name') 
-                    ->label('Class Name')->searchable(),
+                    ->label('Klase')->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

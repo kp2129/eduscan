@@ -30,18 +30,14 @@ class QRCodeController extends Controller
         if ($existingQRCode) {
             if (!$existingQRCode->scanned && $existingQRCode->expires_at->isPast()) {
                 $existingQRCode->delete(); 
-                $qrCode = QRCode::generateForUser($user);
-                return response($qrCode->token);
-            }
-
-            if (!$existingQRCode->scanned) {
-                return response($existingQRCode->token);
+            } elseif (!$existingQRCode->scanned) {
+                return response()->json(['token' => $existingQRCode->token], 200);
             }
         }
 
         $qrCode = QRCode::generateForUser($user);
-
-        return response($qrCode->token);
+        
+        return response()->json(['token' => $qrCode->token], 200);
     }
 
     public function validateQRCode(Request $request)

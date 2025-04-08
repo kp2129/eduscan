@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -14,6 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -22,6 +25,17 @@ return new class extends Migration
             $table->bigInteger('class_id')->nullable();
             $table->boolean('is_at_school')->default(0);
         });
+
+        DB::table('users')->insert([
+            [
+                'name' => 'John',
+                'surname' => 'Doe',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('test'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     /**
