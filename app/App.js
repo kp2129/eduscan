@@ -36,7 +36,7 @@ function HomeTabs({ user, handleLogout }) {
         ),
       }}
     >
-      {/* {user?.role_id === 1 ? ( */}
+      {user?.role_id === 1 ? (
         <Tab.Screen
           name="Scanner"
           component={CameraScreen}
@@ -46,7 +46,7 @@ function HomeTabs({ user, handleLogout }) {
             ),
           }}
         />
-      {/* ) : ( */}
+      ) : (
         <>
           <Tab.Screen
             name="Home"
@@ -67,7 +67,7 @@ function HomeTabs({ user, handleLogout }) {
             }}
           />
         </>
-      {/* )} */}
+      )}
     </Tab.Navigator>
   );
 }

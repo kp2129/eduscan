@@ -7,6 +7,7 @@ import AuthContext from "../contexts/AuthContexts";
 export default function RegisterScreen({ navigation }) {
     const { setUser } = useContext(AuthContext);
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
@@ -19,6 +20,7 @@ export default function RegisterScreen({ navigation }) {
             await register({
                 name,
                 email,
+                surname,
                 password,
                 password_confirmation: passwordConfirmation,
                 device_name: `${Platform.OS} ${Platform.Version}`,
@@ -32,7 +34,7 @@ export default function RegisterScreen({ navigation }) {
             if (e.response?.status === 422) {
                 setErrors(e.response.data.errors);
             }else{
-                Alert.alert('Login Error', e.message || 'An error occurred during login.');
+                Alert.alert('Login Error', e.message || 'Pieslēgšanas laikā radās kļūda.');
             }
         }
     }
@@ -57,6 +59,12 @@ export default function RegisterScreen({ navigation }) {
                             value={name}
                             onChangeText={(text) => setName(text)}
                             errors={errors.name}
+                        />
+                         <FormTextField
+                            label="Surname"
+                            value={surname}
+                            onChangeText={(text) => setSurname(text)}
+                            errors={errors.surname}
                         />
                         <FormTextField
                             label="Email address"

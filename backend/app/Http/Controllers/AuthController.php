@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         return response()->json([
             'token' => $user->createToken($request->device_name)->plainTextToken,
-        ]);
+        ], 201);
     }
 
     public function login(Request $request)
@@ -61,38 +61,4 @@ class AuthController extends Controller
         return response()->noContent();
     }
 
-    
-    public function googleLogin(Request $request)
-    {
-        $request->validate([
-            'idToken' => 'required|string', // Validate the ID token
-            'device_name' => 'required'
-        ]);
-
-        // Verify the ID token with Google
-        $client = new Google_Client(['client_id' => env('GOOGLE_CLIENT_ID')]);  // Specify your CLIENT_ID from Google Developer Console
-        $payload = $client->verifyIdToken($request->idToken);
-
-        if ($payload) {
-            $googleId = $payload['sub']; // Google ID
-            $email = $payload['email'];
-            $name = $payload['name'];
-
-            // Find or create the user in the database
-            $user = User::firstOrCreate(
-                ['email' => $email],
-                [
-                    'name' => $name,
-                    'password' => Hash::make(uniqid()), // Generate a random password
-                    'role_id' => 3,
-                ]
-            );
-
-            return response()->json([
-                'token' => $user->createToken($request->device_name)->plainTextToken,
-            ], 200);
-        }
-
-        return response()->json(['error' => 'Invalid Google token'], 401);
-    }
 }
